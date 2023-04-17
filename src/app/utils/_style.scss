@@ -1,0 +1,69 @@
+//### COLORS
+$Dark-Navy: #1a2a33;
+$Semi-Dark-Navy: #1f3641;
+$Silver: #a8bfc9;
+$Silver-Hover: #dbe8ed;
+$Light-Blue: #31c3bd;
+$Light-Blue-Hover: #65e9e4;
+$Light-Yellow: #f2b137;
+$Light-Yellow-Hover: #ffc860;
+
+//### TYPOGRAPHY
+@mixin typograpgy($typo) {
+  font-weight: 700;
+  @if ($typo== "h-l") {
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 2.5px;
+  } @else if($typo== "h-m") {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+  } @else if($typo== "h-s") {
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 1.25px;
+  } @else if($typo== "h-xs") {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+  } @else if($typo== "b") {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.875px;
+  }
+}
+
+@mixin opacity() {
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+@mixin boxShadow($color) {
+  box-shadow: inset 0px -8px 0px $color;
+}
+
+.jeton {
+  background-clip: text;
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: calc(1em / 16);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+
+  &--x {
+    background-color: $Light-Blue;
+
+    &--stroke {
+      color: $Light-Blue;
+    }
+  }
+  &--o {
+    background-color: $Light-Yellow;
+    &--stroke {
+      color: $Light-Yellow;
+    }
+  }
+}

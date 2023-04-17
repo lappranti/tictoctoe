@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="jetons">
+    <span class="jeton jeton--x">X</span>
+    <span class="jeton jeton--o">O</span>
+  </div>
+  <div class="choices">
+    <span class="title">PICK PLAYER 1’S MARK</span>
+    <span class="btn-choices">
+      <span class="choice-wrapper">
+        <span
+          class="jeton choice choice--x "
+          id="x"
+          (click)="onChooseJeton('x')"
+          >X</span
+        >
+      </span>
+      <span class="choice-wrapper choosen">
+        <span
+          class="jeton choice choice--o "
+          id="o"
+          (click)="onChooseJeton('o')"
+          >O</span
+        >
+      </span>
+    </span>
+    <span class="sub-title">REMEMBER : X GOES FIRST</span>
+  </div>
+  <div class="btn-action">
+    <span class="btn-vs-cpu" (click)="onGoToStart(true)"
+      >NEW GAME (VS CPU)</span
+    >
+    <span class="btn-vs-player" (click)="onGoToStart(false)"
+      >NEW GAME (VS PLAYER)</span
+    >
+  </div>
+</div>

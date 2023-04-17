@@ -1,0 +1,144 @@
+@import "../utils/style";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  gap: 40px;
+
+  @media only screen and (max-width: 375px) {
+    gap: 32px;
+  }
+}
+
+.jetons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  span {
+    font-size: 32px;
+    font-weight: 700;
+  }
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+
+  padding: 24px 32px 30px;
+  background-color: $Semi-Dark-Navy;
+  @include boxShadow(#10212a);
+  border-radius: 15px;
+
+  .title,
+  .sub-title {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .title {
+    @include typograpgy("h-xs");
+    color: $Silver;
+    margin-bottom: 6px;
+  }
+
+  .sub-title {
+    @include typograpgy("b");
+    color: $Silver;
+    @include opacity();
+  }
+
+  .btn-choices {
+    flex: auto;
+    height: 72px;
+    background: $Dark-Navy;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    gap: 3px;
+
+    position: relative;
+
+    .choice-wrapper {
+      flex: 1;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+
+      &.choosen {
+        background-color: $Silver;
+
+        .choice {
+          background-color: $Dark-Navy;
+        }
+      }
+    }
+
+    .choice {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $Silver;
+    }
+
+    &:hover {
+      background: rgba(168, 191, 201, 0.05);
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+.btn-action {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  span {
+    flex: auto;
+    height: 67px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $Dark-Navy;
+    @include typograpgy("h-s");
+    border-radius: 15px;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+  }
+
+  .btn-vs-cpu {
+    background-color: $Light-Yellow;
+    @include boxShadow(#cc8b13);
+
+    &:hover {
+      background-color: $Light-Yellow-Hover;
+    }
+  }
+
+  .btn-vs-player {
+    background-color: $Light-Blue;
+    @include boxShadow(#118c87);
+
+    &:hover {
+      background-color: $Light-Blue-Hover;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    gap: 16px;
+
+    span {
+      height: 56px;
+      @include typograpgy("h-xs");
+    }
+  }
+}

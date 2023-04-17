@@ -1,0 +1,404 @@
+@import "../utils/style";
+
+.container {
+  // background-color: $Semi-Dark-Navy;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .jetons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .turn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    padding: 13px 30px 19px;
+
+    @include typograpgy("h-xs");
+    text-transform: uppercase;
+    color: $Silver;
+
+    background-color: $Semi-Dark-Navy;
+    border-radius: 10px;
+    @include boxShadow(#10212a);
+
+    @media only screen and (max-width: 375px) {
+      @include typograpgy("b");
+      padding: 9px 13px 13px;
+      box-shadow: inset 0px -4px 0px #10212a;
+
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .restart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    background-color: $Silver;
+    @include boxShadow(#6b8997);
+    border-radius: 10px;
+    cursor: pointer;
+
+    i {
+      color: $Semi-Dark-Navy;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: scale(0.9);
+      transition: box-shadow 0.4s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    @media only screen and (max-width: 375px) {
+      width: 40px;
+      height: 40px;
+      box-shadow: inset 0px -4px 0px #6b8997;
+      transition: all 0.2s ease-in-out;
+
+      i {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.body {
+  .rows {
+    //  background-color: red;
+    display: flex;
+    gap: 20px;
+
+    &:nth-of-type(2) {
+      .cel-wrapper {
+        margin: 20px 0;
+      }
+    }
+  }
+
+  .cels {
+    // flex: auto;
+    width: 100%;
+    .cel-wrapper {
+      width: 100%;
+      background-color: $Semi-Dark-Navy;
+      @include boxShadow(#10212a);
+      flex: auto;
+      height: calc(70px + 4vw);
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+
+      .cel {
+        padding-bottom: 12px;
+      }
+
+      &:hover {
+        .cel {
+          &.jeton {
+            color: $Semi-Dark-Navy;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+      }
+
+      &:active {
+        box-shadow: none;
+        transform: scale(0.9);
+        transition: all 0.2s ease-in-out;
+
+        .cel {
+          padding: 0;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+
+  span {
+    display: block;
+  }
+}
+
+.foot {
+  display: flex;
+  gap: 20px;
+
+  .score {
+    flex: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: calc(12 / 16) * 1rem;
+    border-radius: 15px;
+
+    &:nth-of-type(1) {
+      background-color: $Light-Blue;
+    }
+    &:nth-of-type(2) {
+      background-color: $Silver;
+    }
+    &:nth-of-type(3) {
+      background-color: $Light-Yellow;
+    }
+
+    color: $Dark-Navy;
+
+    span {
+      &:nth-of-type(1) {
+        @include typograpgy("b");
+      }
+      &:nth-of-type(2) {
+        @include typograpgy("h-m");
+
+        @media only screen and (max-width: 375px) {
+          @include typograpgy("h-s");
+        }
+      }
+    }
+  }
+}
+
+//### MODAL RESTART
+
+.modal-restart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  background-color: #00000050;
+  display: flex;
+  align-items: center;
+
+  &__content {
+    width: 100%;
+    padding: 67px 24px;
+    background-color: $Semi-Dark-Navy;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+
+    @media only screen and (max-width: 375px) {
+      padding: 61px 24px;
+    }
+  }
+
+  .modal-title {
+    color: $Silver;
+    @include typograpgy("h-l");
+    text-transform: uppercase;
+
+    @media only screen and (max-width: 398px) {
+      @include typograpgy("h-m");
+      font-size: 32px;
+    }
+    @media only screen and (max-width: 330px) {
+      @include typograpgy("h-m");
+    }
+  }
+
+  .modal-action {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .btn {
+      display: inline-block;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 1rem 17px;
+
+      @include typograpgy("h-xs");
+      text-transform: uppercase;
+      color: $Dark-Navy;
+      border-radius: 10px;
+      cursor: pointer;
+
+      @media only screen and (max-width: 375px) {
+        @include typograpgy("b");
+        font-weight: 700;
+      }
+
+      &--cancel {
+        background-color: $Silver;
+        @include boxShadow(#6b8997);
+
+        &:hover {
+          background-color: $Silver-Hover;
+        }
+      }
+      &--restart {
+        background-color: $Light-Yellow;
+        @include boxShadow(#cc8b13);
+
+        &:hover {
+          background-color: $Light-Yellow-Hover;
+        }
+      }
+    }
+  }
+}
+
+//### Modal end game
+
+.modal-end-game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  background-color: #00000050;
+  display: flex;
+  align-items: center;
+
+  &__content {
+    width: 100%;
+    padding: 45px 24px;
+    background-color: $Semi-Dark-Navy;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    @media only screen and (max-width: 375px) {
+      padding: 40px 24px;
+      gap: 16px;
+
+      .modal-action {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .message {
+    @include typograpgy("h-xs");
+    color: $Silver;
+    text-transform: uppercase;
+
+    @media only screen and (max-width: 370px) {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  .title-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .modal-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include typograpgy("h-l");
+    text-transform: uppercase;
+    color: $Silver;
+
+    .jeton {
+      font-size: 54px;
+    }
+
+    &--x {
+      color: $Light-Blue;
+    }
+    &--o {
+      color: $Light-Yellow;
+    }
+
+    @media only screen and (max-width: 550px) {
+      @include typograpgy("h-m");
+      font-size: 32px;
+      .jeton {
+        font-size: 32px;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      @include typograpgy("h-m");
+
+      .jeton {
+        font-size: 30px;
+      }
+    }
+
+    @media only screen and (max-width: 330px) {
+      @include typograpgy("h-s");
+      font-size: 18px;
+    }
+  }
+
+  .modal-action {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .btn {
+      display: inline-block;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 1rem 17px;
+
+      @include typograpgy("h-xs");
+      text-transform: uppercase;
+      color: $Dark-Navy;
+      border-radius: 10px;
+      cursor: pointer;
+
+      @media only screen and (max-width: 375px) {
+        @include typograpgy("b");
+        font-weight: 700;
+      }
+
+      &--cancel {
+        background-color: $Silver;
+        @include boxShadow(#6b8997);
+
+        &:hover {
+          background-color: $Silver-Hover;
+        }
+      }
+      &--restart {
+        background-color: $Light-Yellow;
+        @include boxShadow(#cc8b13);
+
+        &:hover {
+          background-color: $Light-Yellow-Hover;
+        }
+      }
+    }
+  }
+}

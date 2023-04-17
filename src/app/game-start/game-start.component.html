@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="head">
+    <span class="jetons">
+      <span class="jeton jeton--x">X</span><span class="jeton jeton--o">O</span>
+    </span>
+    <span class="turn"
+      ><span>{{ currentPlayer }}</span> <span>turn</span></span
+    >
+    <span class="restart" (click)="onToggleModalRestart()"
+      ><i class="bi bi-arrow-clockwise"></i
+    ></span>
+  </div>
+  <div class="body">
+    <span class="rows" *ngFor="let row of board; let i = index">
+      <span class="cels" *ngFor="let cel of row; let j = index">
+        <span class="cel-wrapper" (click)="makeMove(i, j)">
+          <h3
+            class="cel jeton "
+            [ngClass]="'jeton--' + cel.toLocaleLowerCase()"
+          >
+            {{ cel }}
+          </h3>
+        </span>
+      </span>
+    </span>
+  </div>
+  <div class="foot">
+    <span class="score"
+      ><span
+        >X({{
+          choix.isSolo
+            ? choix.currentPlayer == "X"
+              ? "YOU"
+              : "CPU"
+            : "Player1"
+        }})</span
+      ><span>{{ x }}</span></span
+    >
+    <span class="score"
+      ><span>TIES</span><span>{{ draw }}</span></span
+    >
+    <span class="score"
+      ><span
+        >O({{
+          choix.isSolo
+            ? choix.currentPlayer == "O"
+              ? "You"
+              : "CPU"
+            : "Player2"
+        }})</span
+      ><span>{{ o }}</span></span
+    >
+  </div>
+</div>
+
+<div class="modal-restart" *ngIf="modal">
+  <div class="modal-restart__content">
+    <h3 class="modal-title">Restart Game?</h3>
+    <div class="modal-action">
+      <span class="btn btn--cancel" (click)="onCancel()">No, cancel</span
+      ><span class="btn btn--restart" (click)="onRestart()">Yes, restart</span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-end-game" *ngIf="isGameEnd">
+  <div class="modal-end-game__content">
+    <span class="message">{{ message }}</span>
+    <h3
+      class="modal-title"
+      [ngClass]="'modal-title--' + winner.toLocaleLowerCase()"
+    >
+      <span class="jeton " [ngClass]="'jeton--' + winner.toLocaleLowerCase()">{{
+        winner
+      }}</span
+      >TAKES THE ROUND
+    </h3>
+    <div class="modal-action">
+      <span class="btn btn--cancel" (click)="onCancel()">QUIT</span
+      ><span class="btn btn--restart" (click)="onRestart()">NEXT ROUND</span>
+    </div>
+  </div>
+</div>

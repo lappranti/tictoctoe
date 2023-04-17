@@ -1,0 +1,16 @@
+@import "./utils/style";
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $Dark-Navy;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: calc(460 / 16) * 1rem;
+  margin: 24px;
+}
